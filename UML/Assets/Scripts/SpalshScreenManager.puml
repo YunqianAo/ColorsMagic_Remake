@@ -1,0 +1,7 @@
+@startuml
+class SpalshScreenManager {
+    - Start() : void
+    - LoadNextSceneAfterDelay() : IEnumerator
+}
+MonoBehaviour <|-- SpalshScreenManager
+@enduml

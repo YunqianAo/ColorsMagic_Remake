@@ -1,0 +1,13 @@
+@startuml
+class ColorsMagic {
+    Start() : void
+    Update() : void
+    + ChangeToScene(sceneName:string) : void
+}
+MonoBehaviour <|-- ColorsMagic
+class SpalshScreenManager {
+    - Start() : void
+    - LoadNextSceneAfterDelay() : IEnumerator
+}
+MonoBehaviour <|-- SpalshScreenManager
+@enduml

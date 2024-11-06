@@ -1,0 +1,8 @@
+@startuml
+class ColorsMagic {
+    Start() : void
+    Update() : void
+    + ChangeToScene(sceneName:string) : void
+}
+MonoBehaviour <|-- ColorsMagic
+@enduml
