@@ -1,15 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;  
 
 public class ColorDisplay : MonoBehaviour
 {
-    public Slider redSlider;
-    public Slider greenSlider;
-    public Slider blueSlider;
-
-    public Image colorDisplay;
-
-    void Start()
+    [SerializeField] private Slider redSlider;
+    [SerializeField] private Slider greenSlider;
+    [SerializeField] private Slider blueSlider;
+    [SerializeField] private Image colorDisplay;
+    private Color color;
+    
+    private void Awake()
     {
         redSlider.minValue = 0;
         redSlider.maxValue = 255;
@@ -27,9 +29,9 @@ public class ColorDisplay : MonoBehaviour
         blueSlider.onValueChanged.AddListener(delegate { UpdateColor(); });
     }
 
-    void UpdateColor()
+    private void UpdateColor()
     {
-        Color color = new Color(
+        color = new Color(
             redSlider.value / 255f,   
             greenSlider.value / 255f, 
             blueSlider.value / 255f   
@@ -37,4 +39,6 @@ public class ColorDisplay : MonoBehaviour
 
         colorDisplay.color = color;
     }
+
+    public Color GetColor() => color;
 }
