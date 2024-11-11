@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "FelixJump-GrupoD.sln"
+    "dotnet.defaultSolution": "ColorsMagic.sln"
 }
