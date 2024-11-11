@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;  
 
-public class ColorDisplay : MonoBehaviour
+public class ColorSliders : MonoBehaviour
 {
     [SerializeField] private Slider redSlider;
     [SerializeField] private Slider greenSlider;
@@ -14,13 +14,13 @@ public class ColorDisplay : MonoBehaviour
     private void Awake()
     {
         redSlider.minValue = 0;
-        redSlider.maxValue = 255;
+        redSlider.maxValue = 1;
 
         greenSlider.minValue = 0;
-        greenSlider.maxValue = 255;
+        greenSlider.maxValue = 1;
 
         blueSlider.minValue = 0;
-        blueSlider.maxValue = 255;
+        blueSlider.maxValue = 1;
 
         UpdateColor();
         
@@ -32,9 +32,9 @@ public class ColorDisplay : MonoBehaviour
     private void UpdateColor()
     {
         color = new Color(
-            redSlider.value / 255f,   
-            greenSlider.value / 255f, 
-            blueSlider.value / 255f   
+            redSlider.value,   
+            greenSlider.value, 
+            blueSlider.value   
         );
 
         colorDisplay.color = color;
