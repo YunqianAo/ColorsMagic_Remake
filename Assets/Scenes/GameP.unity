@@ -1824,6 +1824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Temporizador
       objectReference: {fileID: 0}
+    - target: {fileID: 4934202542850560836, guid: 4ab149c0f9caa7c458800c85e851ab85, type: 3}
+      propertyPath: timeleft
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6843275393982677867, guid: 4ab149c0f9caa7c458800c85e851ab85, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1886,11 +1890,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6843275393982677867, guid: 4ab149c0f9caa7c458800c85e851ab85, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 827
+      value: 478.74
       objectReference: {fileID: 0}
     - target: {fileID: 6843275393982677867, guid: 4ab149c0f9caa7c458800c85e851ab85, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 381
+      value: 532
       objectReference: {fileID: 0}
     - target: {fileID: 6843275393982677867, guid: 4ab149c0f9caa7c458800c85e851ab85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

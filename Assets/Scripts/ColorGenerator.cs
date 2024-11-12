@@ -25,7 +25,6 @@ public class ColorGenerator : MonoBehaviour
         {
             randomcolorDisplay.color = color;
         }
-    }
-
-    public Color GetColor() => color;
+    }     
+   public Color GetColor() => color;
 }
