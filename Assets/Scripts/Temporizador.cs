@@ -9,6 +9,7 @@ public class Temporizador : MonoBehaviour
 {
     public float timeleft = 30;
     public Text timeText;
+    public Damage damage;
     void Start()
     {
         

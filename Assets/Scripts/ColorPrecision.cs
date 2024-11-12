@@ -32,6 +32,7 @@ public class ColorPrecision : MonoBehaviour
         float percentageR = GetPercentage(selectedColor.r, colorToMatch.r);
         float percentageG = GetPercentage(selectedColor.g, colorToMatch.g);
         float percentageB = GetPercentage(selectedColor.b, colorToMatch.b);
+    
 
         return (percentageR + percentageG + percentageB) / 3; 
     }

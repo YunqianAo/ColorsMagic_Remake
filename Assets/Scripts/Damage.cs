@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Damage : MonoBehaviour
 {
     float baseDamage = 50;
     float totalDamage = 0;
-
+    public Text textDamage;
+    
     
     ColorPrecision colorPrecision;
 
     private void Start()
     {
         colorPrecision = GameObject.FindObjectOfType<ColorPrecision>();
+    }
+
+    private void Update()
+    {
+        totalDamage = CalculateDamage();//esto no va aqui pero no sé donde
+        textDamage.text = "Damage: " + totalDamage.ToString();
     }
     private float CalculateDamage() 
     {
