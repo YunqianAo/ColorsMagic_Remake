@@ -5,7 +5,7 @@ using UnityEngine;
 public class ColorPrecision : MonoBehaviour
 {
     private ColorSliders colorSliders;
-    private ColorTarget colorTarget;
+    private ColorGenerator colorTarget;
 
     private Color selectedColor;
     private Color colorToMatch;
@@ -15,7 +15,7 @@ public class ColorPrecision : MonoBehaviour
     private void Start()
     {
         colorSliders = GameObject.FindObjectOfType<ColorSliders>();
-        colorTarget = GameObject.FindObjectOfType<ColorTarget>();
+        colorTarget = GameObject.FindObjectOfType<ColorGenerator>();
     }
 
     public void Update()
