@@ -24,7 +24,7 @@ public class ColorPrecision : MonoBehaviour
         Debug.Log(precision);
     }
 
-    private float GetPrecision()
+    public float GetPrecision()
     {
         selectedColor = colorSliders.GetColor();
         colorToMatch = colorTarget.GetColor();
