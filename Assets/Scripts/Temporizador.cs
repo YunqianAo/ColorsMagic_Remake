@@ -16,7 +16,7 @@ public class Temporizador : MonoBehaviour
 
     private void Start()
     {
-        ResetTimer();
+        remainingTime = timeleft;
         colorGenerator = GameObject.FindObjectOfType<ColorGenerator>();
         damage = GameObject.FindObjectOfType<Damage>();
     }
@@ -48,6 +48,7 @@ public class Temporizador : MonoBehaviour
 
     private void ResetTimer()
     {
+        
         remainingTime = timeleft;
     }
 }
