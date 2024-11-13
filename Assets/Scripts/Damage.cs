@@ -19,6 +19,8 @@ public class Damage : MonoBehaviour
     private float CalculateDamage() 
     {
         float precision = colorPrecision.GetPrecision();
+        ScoreManager.instance.SetScore((int)precision);
+
         float damage = 0;
         switch (precision) 
         {

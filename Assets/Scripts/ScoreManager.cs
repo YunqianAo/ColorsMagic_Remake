@@ -1,12 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class ScoreManager
 {
-    // Start is called before the first frame update
-
-    //singleton
     public static ScoreManager instance = new ScoreManager();
 
-    public int score = 20;
+    private int score = 0;
 
-   
+    public int GetScore() => score;
+    public int SetScore(int newScore) => score += newScore;
 }
