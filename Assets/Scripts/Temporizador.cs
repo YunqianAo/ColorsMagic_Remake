@@ -43,7 +43,7 @@ public class Temporizador : MonoBehaviour
             ResetTimer();
             timerIsRunning = true;
         }
-        timeText.text = remainingTime.ToString();
+        timeText.text = remainingTime.ToString("F2");
     }
 
     private void ResetTimer()
