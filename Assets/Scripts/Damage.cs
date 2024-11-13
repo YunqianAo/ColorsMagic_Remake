@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public class Damage : MonoBehaviour
 {
-    float baseDamage = 50;
-    float totalDamage = 0;
-    public Text textDamage;
+    [SerializeField] private Text textDamage;
+
+    private float baseDamage = 50;
+    private float totalDamage = 0;
     
-    ColorPrecision colorPrecision;
+    private ColorPrecision colorPrecision;
+    private Health health;
 
     private void Start()
     {
         colorPrecision = GameObject.FindObjectOfType<ColorPrecision>();
+        health = GameObject.FindObjectOfType<Health>();
     }
 
     private float CalculateDamage() 
@@ -50,5 +53,6 @@ public class Damage : MonoBehaviour
     {
         totalDamage = CalculateDamage();
         textDamage.text = "Damage: " + totalDamage.ToString();
+        health.ApplyDamage(totalDamage);
     }
 }

@@ -21,7 +21,6 @@ public class ColorPrecision : MonoBehaviour
     public void Update()
     {
         precision = GetPrecision();
-        Debug.Log(precision);
     }
 
     public float GetPrecision()
