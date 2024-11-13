@@ -1826,7 +1826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4934202542850560836, guid: 4ab149c0f9caa7c458800c85e851ab85, type: 3}
       propertyPath: timeleft
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6843275393982677867, guid: 4ab149c0f9caa7c458800c85e851ab85, type: 3}
       propertyPath: m_Pivot.x

@@ -7,20 +7,21 @@ using UnityEngine.SceneManagement;
 
 public class Temporizador : MonoBehaviour
 {
-    public float timeleft = 15;
-    public float remainingTime;
-    bool timerIsRunning = true;
-    public Text timeText;
-    Damage damage;
-    ColorGenerator colorGenerator;
-    void Start()
+    [SerializeField] private float timeleft = 10;    
+    [SerializeField] private Text timeText;
+    private float remainingTime;
+    private bool timerIsRunning = true;
+    private ColorGenerator colorGenerator;
+    private Damage damage;
+
+    private void Start()
     {
-        resetTimer();
+        ResetTimer();
         colorGenerator = GameObject.FindObjectOfType<ColorGenerator>();
+        damage = GameObject.FindObjectOfType<Damage>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(remainingTime > 0)
         {
@@ -33,21 +34,20 @@ public class Temporizador : MonoBehaviour
             {
                 timerIsRunning = false;
             }
-            
-            
         }
+
         if(!timerIsRunning)
         {
+            damage.SetDamage();
             colorGenerator.GenerateRandomRGBColor();
-            resetTimer();
+            ResetTimer();
             timerIsRunning = true;
         }
         timeText.text = remainingTime.ToString();
     }
 
-    void resetTimer()
+    private void ResetTimer()
     {
         remainingTime = timeleft;
     }
-   
 }

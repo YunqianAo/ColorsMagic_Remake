@@ -9,7 +9,6 @@ public class Damage : MonoBehaviour
     float totalDamage = 0;
     public Text textDamage;
     
-    
     ColorPrecision colorPrecision;
 
     private void Start()
@@ -17,35 +16,37 @@ public class Damage : MonoBehaviour
         colorPrecision = GameObject.FindObjectOfType<ColorPrecision>();
     }
 
-    private void Update()
-    {
-        totalDamage = CalculateDamage();//esto no va aqui pero no sé donde
-        textDamage.text = "Damage: " + totalDamage.ToString();
-    }
     private float CalculateDamage() 
     {
         float precision = colorPrecision.GetPrecision();
+        float damage = 0;
         switch (precision) 
         {
             case < 50:
-                totalDamage = 0;
+                damage = 0;
                 break;
             case < 60:
-                totalDamage = baseDamage - (baseDamage * 0.1f);
+                damage = baseDamage - (baseDamage * 0.1f);
                 break;
             case < 80:
-                totalDamage = baseDamage + (baseDamage * 0.15f);
+                damage = baseDamage + (baseDamage * 0.15f);
                 baseDamage += 5;
                 break;
             case < 98:
-                totalDamage = baseDamage + (baseDamage * 0.35f);
+                damage = baseDamage + (baseDamage * 0.35f);
                 baseDamage += 10;
                 break;    
             case <= 100:
-                totalDamage = baseDamage + (baseDamage * 1.0f);
+                damage = baseDamage + (baseDamage * 1.0f);
                 baseDamage += 15;
                 break;     
         }
-        return totalDamage;
+        return damage;
+    }
+
+    public void SetDamage()
+    {
+        totalDamage = CalculateDamage();
+        textDamage.text = "Damage: " + totalDamage.ToString();
     }
 }
