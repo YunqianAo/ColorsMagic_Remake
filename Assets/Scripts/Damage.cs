@@ -11,12 +11,10 @@ public class Damage : MonoBehaviour
     private float totalDamage = 0;
     
     private ColorPrecision colorPrecision;
-    private Health health;
 
     private void Start()
     {
         colorPrecision = GameObject.FindObjectOfType<ColorPrecision>();
-        health = GameObject.FindObjectOfType<Health>();
     }
 
     private float CalculateDamage() 
@@ -53,6 +51,7 @@ public class Damage : MonoBehaviour
     {
         totalDamage = CalculateDamage();
         textDamage.text = "Damage: " + totalDamage.ToString();
-        health.ApplyDamage(totalDamage);
     }
+
+    public float GetTotalDamage() => totalDamage;
 }

@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     private float initialHealth = 300;
     private float currentHealth;
 
-    private HealthBar healthBar;
+    [SerializeField] private HealthBar healthBar;
 
     private void Awake()
     {

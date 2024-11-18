@@ -12,13 +12,12 @@ public class Temporizador : MonoBehaviour
     private float remainingTime;
     private bool timerIsRunning = true;
     private ColorGenerator colorGenerator;
-    private Damage damage;
+    [SerializeField] private List<Entity> entities = new List<Entity>(2);
 
     private void Start()
     {
         remainingTime = timeleft;
         colorGenerator = GameObject.FindObjectOfType<ColorGenerator>();
-        damage = GameObject.FindObjectOfType<Damage>();
     }
 
     private void Update()
@@ -38,7 +37,11 @@ public class Temporizador : MonoBehaviour
 
         if(!timerIsRunning)
         {
-            damage.SetDamage();
+            foreach (Entity entity in entities)
+            {
+                entity.GetDamage().SetDamage();
+                entity.Attack();
+            }
             colorGenerator.GenerateRandomRGBColor();
             ResetTimer();
             timerIsRunning = true;
