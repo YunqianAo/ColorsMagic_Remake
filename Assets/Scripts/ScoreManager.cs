@@ -1,13 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ScoreManager
 {
     public static ScoreManager instance = new ScoreManager();
 
     private int score = 0;
+    public UnityEvent<int> OnScoreChanged = new UnityEvent<int>();
 
     public int GetScore() => score;
-    public int SetScore(int newScore) => score += newScore;
+    public int SetScore(int newScore)
+    {
+        score += newScore;
+
+        PlayerPrefs.SetInt("Score", score);
+        PlayerPrefs.Save();
+
+        OnScoreChanged?.Invoke(score);
+
+        return score;
+    }
 }

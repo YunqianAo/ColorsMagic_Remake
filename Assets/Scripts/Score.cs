@@ -11,10 +11,16 @@ public class Score : MonoBehaviour
     private void Start()
     {
         scoreText.text =  ScoreManager.instance.GetScore().ToString();
+        ScoreManager.instance.OnScoreChanged.AddListener(UpdateScoreText);
     }
 
-    private void Update()
+    private void UpdateScoreText(int newScore)
     {
-        scoreText.text = ScoreManager.instance.GetScore().ToString();
+        scoreText.text = newScore.ToString();
+    }
+
+    private void OnDestroy()
+    {
+        ScoreManager.instance.OnScoreChanged.RemoveListener(UpdateScoreText);
     }
 }
