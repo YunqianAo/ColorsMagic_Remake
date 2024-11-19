@@ -14,11 +14,6 @@ public class Health : MonoBehaviour
         ResetHealth();
     }
 
-    private void Start()
-    {
-        healthBar = GameObject.FindObjectOfType<HealthBar>();
-    }
-
     public void ApplyDamage(float damage)
     {
         currentHealth -= damage;

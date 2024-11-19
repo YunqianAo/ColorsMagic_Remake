@@ -10,5 +10,6 @@ public class HealthBar : MonoBehaviour
     public void UpdateBar(float percentage)
     {
         barImage.fillAmount = percentage;
+        Debug.Log(barImage.fillAmount);
     }
 }

@@ -6,7 +6,7 @@ public class Entity : MonoBehaviour
 {
     [SerializeField] Health health;
     [SerializeField] Damage damage;
-    [SerializeField] Health target;
+    [SerializeField] public bool isEnemy = false;
 
     public void Attack()
     {

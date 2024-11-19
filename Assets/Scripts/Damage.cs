@@ -12,15 +12,24 @@ public class Damage : MonoBehaviour
     private float multiplier = 1;
     private ColorPrecision colorPrecision;
     private ButtonManager buttonManager;
+    private EnemyTurn enemyTurn;
+
     private void Start()
     {
         colorPrecision = GameObject.FindObjectOfType<ColorPrecision>();
         buttonManager = GameObject.FindObjectOfType<ButtonManager>();
+        enemyTurn = GameObject.FindObjectOfType<EnemyTurn>();
     }
 
-    private float CalculateDamage() 
+    private float CalculateDamage(bool isEnemy) 
     {
-        float precision = colorPrecision.GetPrecision();
+        float precision;
+
+        if (isEnemy)
+            precision = enemyTurn.GetPrecision();
+        else
+            precision = colorPrecision.GetPrecision();
+
         ScoreManager.instance.SetScore((int)precision);
 
         if(buttonManager.atack)
@@ -75,12 +84,13 @@ public class Damage : MonoBehaviour
             }
             return defense;
         }
-       
+
+       return 0;
     }
 
-    public void SetDamage()
+    public void SetDamage(bool isEnemy = false)
     {
-        totalDamage = CalculateDamage();
+        totalDamage = CalculateDamage(isEnemy);
         textDamage.text = "Damage: " + totalDamage.ToString();
     }
 

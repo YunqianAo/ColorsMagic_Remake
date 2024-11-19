@@ -36,9 +36,10 @@ public class ColorGenerator : MonoBehaviour
 
     public void GenerateEnemyRGBColor()
     {
-        red = color.r * enemy.chance;
-        green = color.g * enemy.chance;
-        blue = color.b * enemy.chance;
+        enemy.CalculateChance();
+        red = color.r * enemy.GetChance();
+        green = color.g * enemy.GetChance();
+        blue = color.b * enemy.GetChance();
         enemyColor = new Color(red, green, blue);
         if (enemycolorDisplay != null)
         {

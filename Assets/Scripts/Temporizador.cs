@@ -47,15 +47,16 @@ public class Temporizador : MonoBehaviour
             {
                 foreach (Entity entity in entities)
                 {
-                    entity.GetDamage().SetDamage();
+                    if (entity.isEnemy)
+                        entity.GetDamage().SetDamage(true);
+                    else
+                        entity.GetDamage().SetDamage();
+
                     entity.Attack();
                 }
                 colorGenerator.GenerateRandomRGBColor();
                 ResetTimer();
                 timerIsRunning = true;
-
-
-                
 
             }
             timeText.text = remainingTime.ToString("F2");
