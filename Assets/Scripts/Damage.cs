@@ -32,7 +32,7 @@ public class Damage : MonoBehaviour
 
         ScoreManager.instance.SetScore((int)precision);
 
-        if(buttonManager.atack)
+        if(buttonManager.attack || isEnemy)
         {
             float damage = 0;
             switch (precision)
@@ -41,18 +41,18 @@ public class Damage : MonoBehaviour
                     damage = 0;
                     break;
                 case < 60:
-                    damage = baseDamage - (baseDamage * 0.1f) * multiplier;
+                    damage = (baseDamage - (baseDamage * 0.1f)) * multiplier;
                     break;
                 case < 80:
-                    damage = baseDamage + (baseDamage * 0.15f ) * multiplier;
+                    damage = (baseDamage + (baseDamage * 0.15f)) * multiplier;
                     baseDamage += 5;
                     break;
                 case < 98:
-                    damage = baseDamage + (baseDamage * 0.35f) * multiplier;
+                    damage = (baseDamage + (baseDamage * 0.35f)) * multiplier;
                     baseDamage += 10;
                     break;
                 case <= 100:
-                    damage = baseDamage + (baseDamage * 1.0f) * multiplier;
+                    damage = (baseDamage + (baseDamage * 1.0f)) * multiplier;
                     baseDamage += 15;
                     break;
             }
@@ -61,29 +61,20 @@ public class Damage : MonoBehaviour
         }
         if(buttonManager.defense)
         {
-            float defense = 0;
             switch (precision)
             {
-                case < 40:
-                    defense = 1.5f;
-                    break;
                 case < 60:
-                    defense = 1;
                     break;
                 case < 80:
-                    defense = 0.6f;
                     multiplier = 1.25f;
                     break;
                 case < 98:
-                    defense = 0.3f;
                     multiplier = 1.5f;
                     break;
                 case <= 100:
-                    defense = 0;
                     multiplier = 2;
                     break;
             }
-            return defense;
         }
        return 0;
     }

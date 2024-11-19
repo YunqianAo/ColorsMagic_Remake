@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public Button[] levelButtons;
+    [SerializeField] private TMPro.TextMeshProUGUI levelText;
     
     void Start()
     {
@@ -24,6 +25,8 @@ public class LevelManager : MonoBehaviour
                 levelButtons[i].interactable = true;
             }
         }
+
+        levelText.text = "Current Level " + PlayerPrefs.GetInt("LevelsUnlocked", 1);
     }
 
     public void StartLevel(int level)

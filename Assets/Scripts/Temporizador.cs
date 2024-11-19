@@ -28,7 +28,7 @@ public class Temporizador : MonoBehaviour
 
     private void Update()
     {
-        if (butonManager.atack || butonManager.defense)
+        if (butonManager.attack || butonManager.defense)
         {
             if (remainingTime > 0)
             {
@@ -68,7 +68,7 @@ public class Temporizador : MonoBehaviour
     public void ResetTimer()
     {
         remainingTime = timeleft;
-        butonManager.atack = false;
+        butonManager.attack = false;
         butonManager.defense = false;
     }
 }

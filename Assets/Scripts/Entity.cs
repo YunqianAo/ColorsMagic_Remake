@@ -8,8 +8,16 @@ public class Entity : MonoBehaviour
     [SerializeField] Damage damage;
     [SerializeField] public bool isEnemy = false;
 
+    private ButtonManager buttonManager;
+
+    private void Start()
+    {
+        buttonManager = GameObject.FindObjectOfType<ButtonManager>();
+    }
+
     public void Attack()
     {
+        if (buttonManager.attack) 
         health.ApplyDamage(damage.GetTotalDamage());
     }
 

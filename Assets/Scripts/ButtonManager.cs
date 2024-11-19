@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    public bool atack = false;
+    public bool attack = false;
     public bool defense = false;
 
     public void atackButton()
     {
-        atack = true;
+        attack = true;
     }
 
     public void defenseButton()

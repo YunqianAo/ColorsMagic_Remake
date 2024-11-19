@@ -19,6 +19,12 @@ public class Health : MonoBehaviour
     private void Start()
     {
         entity = GameObject.FindObjectOfType<Entity>();
+        if (entity.isEnemy)
+        {
+            int currentLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
+            initialHealth = initialHealth + (currentLevel * 25);
+            ResetHealth();
+        }
     }
 
     public void ApplyDamage(float damage)
