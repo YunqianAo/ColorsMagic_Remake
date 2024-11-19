@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Temporizador : MonoBehaviour
 {
-    [SerializeField] private float timeleft = 10;
+    [SerializeField] private float timeleft = 15;
     [SerializeField] private Text timeText;
     private float remainingTime;
     private bool timerIsRunning = true;
@@ -18,7 +18,8 @@ public class Temporizador : MonoBehaviour
 
     private void Start()
     {
-        remainingTime = timeleft;
+        int currentLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
+        remainingTime = timeleft - (currentLevel - 1);
         butonManager = GameObject.FindObjectOfType<ButtonManager>();
         colorGenerator = GameObject.FindObjectOfType<ColorGenerator>();
         colorSliders = GameObject.FindObjectOfType<ColorSliders>();

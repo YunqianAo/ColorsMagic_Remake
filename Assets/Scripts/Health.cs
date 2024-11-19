@@ -46,6 +46,13 @@ public class Health : MonoBehaviour
         }
         else
         {
+            int currentLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
+            int levelsUnlocked = PlayerPrefs.GetInt("LevelsUnlocked", 1);
+            if (currentLevel >= levelsUnlocked)
+            {
+                PlayerPrefs.SetInt("LevelsUnlocked", currentLevel + 1);
+                PlayerPrefs.Save();
+            }
             SceneManager.LoadScene("Victory");
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -16,23 +17,19 @@ public class LevelManager : MonoBehaviour
         {
             if (i + 1 > levelsUnlocked)
             {
-                levelButtons[i].interactable = true;
+                levelButtons[i].interactable = false;
             }
             else
             {
-                levelButtons[i].interactable = false;
+                levelButtons[i].interactable = true;
             }
         }
     }
 
-    public void CompleteLevel(int level)
+    public void StartLevel(int level)
     {
-        
-        int levelsUnlocked = PlayerPrefs.GetInt("LevelsUnlocked", 1);
-        if (level >= levelsUnlocked)
-        {
-            PlayerPrefs.SetInt("LevelsUnlocked", level + 1);
-            PlayerPrefs.Save();
-        }
+        PlayerPrefs.SetInt("CurrentLevel", level);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("GameP");
     }
 }
