@@ -9,8 +9,10 @@ public class ColorSliders : MonoBehaviour
     [SerializeField] private Slider greenSlider;
     [SerializeField] private Slider blueSlider;
     [SerializeField] private Image colorDisplay;
+
     private ButtonManager buttonManager;
     private Color color;
+
     private void Start()
     {
         buttonManager = GameObject.FindObjectOfType<ButtonManager>();
@@ -36,17 +38,21 @@ public class ColorSliders : MonoBehaviour
 
     private void UpdateColor()
     {
-        
-            color = new Color(
-                        redSlider.value,
-                        greenSlider.value,
-                        blueSlider.value
-                    );
-        
-            colorDisplay.color = color;
-        
-        
+        color = new Color(
+                    redSlider.value,
+                    greenSlider.value,
+                    blueSlider.value
+                );
+    
+        colorDisplay.color = color;
     }
 
     public Color GetColor() => color;
+
+    public void EnableSliders(bool enable)
+    {
+        redSlider.gameObject.SetActive(enable);
+        greenSlider.gameObject.SetActive(enable);
+        blueSlider.gameObject.SetActive(enable);
+    }
 }

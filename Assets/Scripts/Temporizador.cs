@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-
 
 public class Temporizador : MonoBehaviour
 {
@@ -11,28 +9,32 @@ public class Temporizador : MonoBehaviour
     [SerializeField] private Text timeText;
     private float remainingTime;
     private bool timerIsRunning = true;
+
+    [SerializeField] private List<Entity> entities = new List<Entity>(2);    
+    
     private ColorGenerator colorGenerator;
+    private ColorSliders colorSliders;
+    private ButtonManager butonManager;
 
-    [SerializeField] private List<Entity> entities = new List<Entity>(2);
-
-    private Damage damage;
-    private ButtonManager butonmanager;
     private void Start()
     {
         remainingTime = timeleft;
-        butonmanager = GameObject.FindObjectOfType<ButtonManager>();
+        butonManager = GameObject.FindObjectOfType<ButtonManager>();
         colorGenerator = GameObject.FindObjectOfType<ColorGenerator>();
+        colorSliders = GameObject.FindObjectOfType<ColorSliders>();
+        colorSliders.EnableSliders(false);
     }
 
     private void Update()
     {
-        if (butonmanager.atack || butonmanager.defense)
+        if (butonManager.atack || butonManager.defense)
         {
-
             if (remainingTime > 0)
             {
                 remainingTime -= Time.deltaTime;
                 remainingTime = Mathf.Max(remainingTime, 0);
+                
+                colorSliders.EnableSliders(true);
             }
             else
             {
@@ -41,7 +43,6 @@ public class Temporizador : MonoBehaviour
                     timerIsRunning = false;
                 }
             }
-
 
             if (!timerIsRunning)
             {
@@ -57,20 +58,16 @@ public class Temporizador : MonoBehaviour
                 colorGenerator.GenerateRandomRGBColor();
                 ResetTimer();
                 timerIsRunning = true;
-
+                colorSliders.EnableSliders(false);
             }
             timeText.text = remainingTime.ToString("F2");
-
         }
-
-
     }
+
     public void ResetTimer()
     {
-
         remainingTime = timeleft;
-        butonmanager.atack = false;
-        butonmanager.defense = false;
+        butonManager.atack = false;
+        butonManager.defense = false;
     }
 }
-

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class Health : MonoBehaviour
 {
     private float initialHealth = 300;
@@ -9,14 +10,17 @@ public class Health : MonoBehaviour
 
     [SerializeField] private HealthBar healthBar;
     private Entity entity;
+
     private void Awake()
     {
         ResetHealth();
     }
+
     private void Start()
     {
         entity = GameObject.FindObjectOfType<Entity>();
     }
+
     public void ApplyDamage(float damage)
     {
         currentHealth -= damage;
@@ -33,6 +37,7 @@ public class Health : MonoBehaviour
     {
         currentHealth = initialHealth;
     }
+
     private void End()
     {
         if (entity.isEnemy)
@@ -43,9 +48,5 @@ public class Health : MonoBehaviour
         {
             SceneManager.LoadScene("Victory");
         }
-        
-        
-        
     }
-
 }
