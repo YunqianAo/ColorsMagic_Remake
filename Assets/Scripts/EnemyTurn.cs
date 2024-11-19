@@ -10,7 +10,11 @@ public class EnemyTurn : MonoBehaviour
 
     public void CalculateChance()
     {
-        chance = Random.Range(minChance, maxChance);
+        int currentLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
+        chance = Random.Range(
+            minChance + (currentLevel == 1 ? 0 : currentLevel * 0.05f),
+            maxChance + (currentLevel == 1 ? 0 : currentLevel * 0.05f)
+        );
     }
 
     public float GetPrecision() => chance * 100;
