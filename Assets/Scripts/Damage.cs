@@ -41,21 +41,22 @@ public class Damage : MonoBehaviour
                     damage = 0;
                     break;
                 case < 60:
-                    damage = baseDamage - (baseDamage * 0.1f);
+                    damage = baseDamage - (baseDamage * 0.1f) * multiplier;
                     break;
                 case < 80:
-                    damage = baseDamage + (baseDamage * 0.15f);
+                    damage = baseDamage + (baseDamage * 0.15f ) * multiplier;
                     baseDamage += 5;
                     break;
                 case < 98:
-                    damage = baseDamage + (baseDamage * 0.35f);
+                    damage = baseDamage + (baseDamage * 0.35f) * multiplier;
                     baseDamage += 10;
                     break;
                 case <= 100:
-                    damage = baseDamage + (baseDamage * 1.0f);
+                    damage = baseDamage + (baseDamage * 1.0f) * multiplier;
                     baseDamage += 15;
                     break;
             }
+            multiplier = 1;
             return damage;
         }
         if(buttonManager.defense)
@@ -63,28 +64,27 @@ public class Damage : MonoBehaviour
             float defense = 0;
             switch (precision)
             {
-                case < 50:
-                    defense = 0;
+                case < 40:
+                    defense = 1.5f;
                     break;
                 case < 60:
-                    defense = baseDamage - (baseDamage * 0.1f);
+                    defense = 1;
                     break;
                 case < 80:
-                    defense = baseDamage + (baseDamage * 0.15f);
-                    baseDamage += 5;
+                    defense = 0.6f;
+                    multiplier = 1.25f;
                     break;
                 case < 98:
-                    defense = baseDamage + (baseDamage * 0.35f);
-                    baseDamage += 10;
+                    defense = 0.3f;
+                    multiplier = 1.5f;
                     break;
                 case <= 100:
-                    defense = baseDamage + (baseDamage * 1.0f);
-                    baseDamage += 15;
+                    defense = 0;
+                    multiplier = 2;
                     break;
             }
             return defense;
         }
-
        return 0;
     }
 
