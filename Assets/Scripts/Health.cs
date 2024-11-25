@@ -11,7 +11,8 @@ public class Health : MonoBehaviour
 
     [SerializeField] private HealthBar healthBar;
     private Entity entity;
-
+    public AudioSource winFx;
+    public AudioSource loseFx;
     private void Awake()
     {
         ResetHealth();
@@ -50,6 +51,7 @@ public class Health : MonoBehaviour
     {
         if (entity.isEnemy)
         {
+            loseFx.Play();
             ColorsMagic.ChangeToScene("Defeat");
         }
         else
@@ -61,6 +63,7 @@ public class Health : MonoBehaviour
                 PlayerPrefs.SetInt("LevelsUnlocked", currentLevel + 1);
                 PlayerPrefs.Save();
             }
+            winFx.Play();
             ColorsMagic.ChangeToScene("Victory");
         }
     }
