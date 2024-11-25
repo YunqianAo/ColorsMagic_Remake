@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class Score : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
-   
+
     private void Start()
     {
         scoreText.text =  ScoreManager.instance.GetScore().ToString();

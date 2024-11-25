@@ -19,6 +19,7 @@ public class ScoreManager
     public int SetScore(int newScore)
     {
         score += newScore;
+
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.Save();
 

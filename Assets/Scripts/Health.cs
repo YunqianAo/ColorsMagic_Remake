@@ -10,7 +10,6 @@ public class Health : MonoBehaviour
 
     [SerializeField] private HealthBar healthBar;
     private Entity entity;
-    //AudioSource victoryAudio;
 
     private void Awake()
     {
@@ -60,7 +59,6 @@ public class Health : MonoBehaviour
                 PlayerPrefs.SetInt("LevelsUnlocked", currentLevel + 1);
                 PlayerPrefs.Save();
             }
-            
             SceneManager.LoadScene("Victory");
         }
     }

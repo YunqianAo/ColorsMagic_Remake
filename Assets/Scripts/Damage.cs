@@ -14,7 +14,6 @@ public class Damage : MonoBehaviour
     private ButtonManager buttonManager;
     private EnemyTurn enemyTurn;
 
-    public AudioSource scoreaudio;
     private void Start()
     {
         colorPrecision = GameObject.FindObjectOfType<ColorPrecision>();
@@ -30,7 +29,7 @@ public class Damage : MonoBehaviour
             precision = enemyTurn.GetPrecision();
         else
             precision = colorPrecision.GetPrecision();
-       
+
         ScoreManager.instance.SetScore((int)precision);
 
         if(buttonManager.attack || isEnemy)
@@ -83,7 +82,6 @@ public class Damage : MonoBehaviour
     public void SetDamage(bool isEnemy = false)
     {
         totalDamage = CalculateDamage(isEnemy);
-        scoreaudio.Play();
         textDamage.text = "Damage: " + totalDamage.ToString();
     }
 

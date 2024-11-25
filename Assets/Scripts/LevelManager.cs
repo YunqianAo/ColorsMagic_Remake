@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
 {
     public Button[] levelButtons;
     [SerializeField] private TMPro.TextMeshProUGUI levelText;
-    public AudioSource clicksound;
+    
     void Start()
     {
         int levelsUnlocked = PlayerPrefs.GetInt("LevelsUnlocked", 1);
@@ -31,7 +31,6 @@ public class LevelManager : MonoBehaviour
 
     public void StartLevel(int level)
     {
-        clicksound.Play();
         PlayerPrefs.SetInt("CurrentLevel", level);
         PlayerPrefs.Save();
         SceneManager.LoadScene("GameP");

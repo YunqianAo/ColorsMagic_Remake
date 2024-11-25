@@ -7,16 +7,14 @@ public class ButtonManager : MonoBehaviour
 {
     public bool attack = false;
     public bool defense = false;
-    public AudioSource clickaudio;
+
     public void atackButton()
     {
-        clickaudio.Play();
         attack = true;
     }
 
     public void defenseButton()
     {
-        clickaudio.Play();
         defense = true;
     }
 
