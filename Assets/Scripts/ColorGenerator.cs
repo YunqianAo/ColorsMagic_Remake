@@ -11,7 +11,12 @@ public class ColorGenerator : MonoBehaviour
     private Color color;
     private Color enemyColor;
     private EnemyTurn enemy;
-    
+    public float RandomSpeed = 10;
+    public float initialSpeed = 100f; 
+    public float speedIncreaseRate = 10f; 
+    private float totalRotation = 0f;
+    private const float targetRotation = 360f * 3;
+
     void Start()
     {
         enemy = GameObject.FindObjectOfType<EnemyTurn>();
@@ -27,12 +32,13 @@ public class ColorGenerator : MonoBehaviour
 
         if (randomcolorDisplay != null)
         {
+            totalRotation = 0f;
             randomcolorDisplay.color = color;
         }
         GenerateEnemyRGBColor();
     }
-  
-   public Color GetColor() => color;
+
+    public Color GetColor() => color;
 
     public void GenerateEnemyRGBColor()
     {
@@ -47,4 +53,33 @@ public class ColorGenerator : MonoBehaviour
         }
     }
     public Color GetEnemyColor() => enemyColor;
+
+    private void AnimateRamdomColor()
+    {
+
+        
+        if (totalRotation < targetRotation)
+        {
+           
+            initialSpeed += speedIncreaseRate * Time.deltaTime;  
+
+           
+            totalRotation += initialSpeed * Time.deltaTime;
+
+            
+            float rotationZ = Mathf.Repeat(totalRotation, 360f);
+            randomcolorDisplay.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
+        }
+        else
+        {
+            
+            randomcolorDisplay.transform.rotation = Quaternion.Euler(0, 0, Mathf.Repeat(totalRotation, 360f));
+        }
+
+    }
+
+    public void Update()
+    {
+        AnimateRamdomColor();
+    }
 }
