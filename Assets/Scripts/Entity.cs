@@ -7,6 +7,7 @@ public class Entity : MonoBehaviour
     [SerializeField] Health health;
     [SerializeField] Damage damage;
     [SerializeField] public bool isEnemy = false;
+    public ParticleSystem damagePS;
 
     private ButtonManager buttonManager;
 
@@ -19,6 +20,11 @@ public class Entity : MonoBehaviour
     {
         if (buttonManager.attack) 
         health.ApplyDamage(damage.GetTotalDamage());
+        if(damage.GetTotalDamage() >= 50)
+        {
+            damagePS.Emit(40);
+        }
+        
     }
 
     public Damage GetDamage() => damage;
