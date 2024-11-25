@@ -26,6 +26,7 @@ public class ColorsMagic : MonoBehaviour
     public void ChangeToScene(string sceneName)
     {
         // Llama a la corutina para hacer un Fade Out y cambiar de escena.
+        fadeImage.gameObject.SetActive(true);
         if (fadeImage != null)
         {
             StartCoroutine(FadeIn());
