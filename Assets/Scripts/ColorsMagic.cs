@@ -7,80 +7,125 @@ public class ColorsMagic : MonoBehaviour
 {
     public static ColorsMagic Instance { get; private set; }
     public Image fadeImage; // Imagen usada para el efecto de fade (debe cubrir toda la pantalla).
+    public GameObject fadePrefab; // Prefab de la imagen de fade, usado si no se encuentra uno en escena.
     public float fadeDuration = 1f; // Duración del fade.
-
 
     private void Awake()
     {
-        // Configura el Singleton.
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Hace que el objeto persista entre escenas.
+            DontDestroyOnLoad(gameObject); // Persiste todo el GameObject, incluida la imagen.
         }
         else
         {
-            Destroy(gameObject); // Elimina instancias duplicadas.
+            Destroy(gameObject); // Evita duplicados.
+            return;
+        }
+
+        // Inicializa el fadeImage si no está asignado.
+        EnsureFadeImage();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded; // Registra el evento para reasignar referencias en cada escena.
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Desregistra el evento al desactivar el objeto.
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        EnsureFadeImage(); // Reasigna fadeImage si es necesario al cargar una nueva escena.
+    }
+
+    private void EnsureFadeImage()
+    {
+        if (fadeImage == null)
+        {
+            // Busca un Image en el hijo si existe.
+            fadeImage = GetComponentInChildren<Image>();
+
+            // Si no se encuentra, instancia el prefab y asigna la referencia.
+            if (fadeImage == null && fadePrefab != null)
+            {
+                GameObject fadeInstance = Instantiate(fadePrefab, transform);
+                fadeImage = fadeInstance.GetComponent<Image>();
+            }
+
+            // Si sigue siendo null, lanza una advertencia.
+            if (fadeImage == null)
+            {
+                Debug.LogWarning("No se pudo encontrar o crear un objeto fadeImage.");
+            }
         }
     }
+
     public void ChangeToScene(string sceneName)
     {
-        // Llama a la corutina para hacer un Fade Out y cambiar de escena.
-        fadeImage.gameObject.SetActive(true);
         if (fadeImage != null)
         {
-            StartCoroutine(FadeIn());
-            StartCoroutine(FadeOut(sceneName));
+            StartCoroutine(FadeOutAndChangeScene(sceneName));
         }
         else
         {
-            // Si no hay imagen de fade, cambia directamente.
+            Debug.LogWarning("fadeImage es null. Cambiando escena directamente.");
             SceneManager.LoadScene(sceneName);
         }
     }
 
     private IEnumerator FadeIn()
     {
-        fadeImage.gameObject.SetActive(true);
-        // Comienza totalmente opaco.
-        float alpha = 1f;
-
-        while (alpha > 0f)
+        if (fadeImage != null)
         {
-            alpha -= Time.deltaTime / fadeDuration;
-            SetFadeAlpha(alpha);
-            yield return null;
-        }
+            fadeImage.gameObject.SetActive(true);
+            float alpha = 1f;
 
-        // Asegúrate de que quede completamente transparente.
-        SetFadeAlpha(0f);
+            while (alpha > 0f)
+            {
+                alpha -= Time.deltaTime / fadeDuration;
+                SetFadeAlpha(alpha);
+                yield return null;
+            }
+
+            SetFadeAlpha(0f);
+            fadeImage.gameObject.SetActive(false);
+        }
     }
 
-    private IEnumerator FadeOut(string sceneName)
+    private IEnumerator FadeOutAndChangeScene(string sceneName)
     {
-        // Comienza totalmente transparente.
-        float alpha = 0f;
-
-        while (alpha < 1f)
+        if (fadeImage != null)
         {
-            alpha += Time.deltaTime / fadeDuration;
-            SetFadeAlpha(alpha);
-            yield return null;
+            fadeImage.gameObject.SetActive(true);
+            float alpha = 0f;
+
+            while (alpha < 1f)
+            {
+                alpha += Time.deltaTime / fadeDuration;
+                SetFadeAlpha(alpha);
+                yield return null;
+            }
+
+            SetFadeAlpha(1f);
         }
 
-        // Asegúrate de que quede completamente opaco.
-        SetFadeAlpha(1f);
-        fadeImage.gameObject.SetActive(false);
-
-        // Cambia a la nueva escena.
+        // Cambia de escena y luego realiza el FadeIn.
         SceneManager.LoadScene(sceneName);
+        yield return null; // Espera un frame para que la escena cargue.
+        StartCoroutine(FadeIn());
     }
 
     private void SetFadeAlpha(float alpha)
     {
-        // Ajusta la opacidad de la imagen.
-        Color color = fadeImage.color;
-        color.a = Mathf.Clamp01(alpha); // Asegura que el valor esté entre 0 y 1.
-        fadeImage.color = color;
+        if (fadeImage != null)
+        {
+            Color color = fadeImage.color;
+            color.a = Mathf.Clamp01(alpha);
+            fadeImage.color = color;
+        }
     }
 }
