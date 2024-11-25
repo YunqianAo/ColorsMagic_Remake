@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
 {
     public Button[] levelButtons;
     [SerializeField] private TMPro.TextMeshProUGUI levelText;
+    ColorsMagic ColorsMagic;
     
     void Start()
     {
@@ -27,12 +28,15 @@ public class LevelManager : MonoBehaviour
         }
 
         levelText.text = "Current Level " + PlayerPrefs.GetInt("LevelsUnlocked", 1);
+
+        ColorsMagic = FindAnyObjectByType<ColorsMagic>();
     }
 
     public void StartLevel(int level)
     {
         PlayerPrefs.SetInt("CurrentLevel", level);
         PlayerPrefs.Save();
-        SceneManager.LoadScene("GameP");
+        //SceneManager.LoadScene("GameP");
+        ColorsMagic.ChangeToScene("GameP");
     }
 }

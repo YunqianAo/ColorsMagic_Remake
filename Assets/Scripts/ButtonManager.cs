@@ -8,6 +8,12 @@ public class ButtonManager : MonoBehaviour
     public bool attack = false;
     public bool defense = false;
 
+    ColorsMagic ColorsMagic;
+    private void Awake()
+    {
+        ColorsMagic = FindAnyObjectByType<ColorsMagic>();
+    }
+
     public void atackButton()
     {
         attack = true;
@@ -22,6 +28,6 @@ public class ButtonManager : MonoBehaviour
 
     public void mainMenu()
     {
-        SceneManager.LoadScene("Lobby");
+        ColorsMagic.ChangeToScene("Lobby");
     }
 }

@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     private float initialHealth = 300;
     private float currentHealth;
+    ColorsMagic ColorsMagic;
 
     [SerializeField] private HealthBar healthBar;
     private Entity entity;
@@ -25,6 +26,7 @@ public class Health : MonoBehaviour
             initialHealth = initialHealth + (currentLevel * 25);
             ResetHealth();
         }
+        ColorsMagic = FindAnyObjectByType<ColorsMagic>();
     }
 
     public void ApplyDamage(float damage)
@@ -48,7 +50,7 @@ public class Health : MonoBehaviour
     {
         if (entity.isEnemy)
         {
-            SceneManager.LoadScene("Defeat");
+            ColorsMagic.ChangeToScene("Defeat");
         }
         else
         {
@@ -59,7 +61,7 @@ public class Health : MonoBehaviour
                 PlayerPrefs.SetInt("LevelsUnlocked", currentLevel + 1);
                 PlayerPrefs.Save();
             }
-            SceneManager.LoadScene("Victory");
+            ColorsMagic.ChangeToScene("Victory");
         }
     }
 }
