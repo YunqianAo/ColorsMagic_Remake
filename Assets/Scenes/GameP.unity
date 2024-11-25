@@ -917,6 +917,7 @@ GameObject:
   - component: {fileID: 552844601}
   - component: {fileID: 552844600}
   - component: {fileID: 552844603}
+  - component: {fileID: 552844604}
   m_Layer: 5
   m_Name: Selected Color
   m_TagString: Untagged
@@ -978,7 +979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 249.9, y: -154.792}
+  m_AnchoredPosition: {x: 735, y: -155}
   m_SizeDelta: {x: 210.2, y: 190.417}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &552844603
@@ -996,6 +997,21 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
   m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 1
+--- !u!114 &552844604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552844599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af758f438807b5f4e95d11b195ff571b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 70
+  direction: {x: -1, y: 0, z: 0}
+  distance: 36
 --- !u!1001 &570475494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1237,6 +1253,7 @@ GameObject:
   - component: {fileID: 766338380}
   - component: {fileID: 766338379}
   - component: {fileID: 766338378}
+  - component: {fileID: 766338381}
   m_Layer: 5
   m_Name: EnemyColor
   m_TagString: Untagged
@@ -1260,7 +1277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -253.29, y: 393}
+  m_AnchoredPosition: {x: -735, y: 393}
   m_SizeDelta: {x: 210.2, y: 190.417}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &766338378
@@ -1316,6 +1333,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766338376}
   m_CullTransparentMesh: 1
+--- !u!114 &766338381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766338376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af758f438807b5f4e95d11b195ff571b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 75
+  direction: {x: 1, y: 0, z: 0}
+  distance: 36
 --- !u!114 &862395011 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2400241749101588753, guid: c8033cf716cb6dc48bc0bfb78dabbdc8, type: 3}
