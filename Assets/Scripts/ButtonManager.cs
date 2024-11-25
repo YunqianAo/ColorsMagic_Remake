@@ -11,13 +11,15 @@ public class ButtonManager : MonoBehaviour
     public void atackButton()
     {
         clickaudio.Play();
-        attack = true;
+        if (!defense)
+            attack = true;
     }
 
     public void defenseButton()
     {
         clickaudio.Play();
-        defense = true;
+        if (!attack)
+            defense = true;
     }
 
     public void mainMenu()
