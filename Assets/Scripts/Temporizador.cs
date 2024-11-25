@@ -7,6 +7,7 @@ public class Temporizador : MonoBehaviour
 {
     [SerializeField] private float timeleft = 15;
     [SerializeField] private Text timeText;
+    [SerializeField] private Button skipButton; // Add SKIP button
     private float remainingTime;
     private bool timerIsRunning = true;
 
@@ -15,6 +16,11 @@ public class Temporizador : MonoBehaviour
     private ColorGenerator colorGenerator;
     private ColorSliders colorSliders;
     private ButtonManager butonManager;
+
+    private void Awake()
+    {
+        skipButton.gameObject.SetActive(false); // Initialize SKIP button and set it to inactive
+    }
 
     private void Start()
     {
@@ -36,6 +42,7 @@ public class Temporizador : MonoBehaviour
                 remainingTime = Mathf.Max(remainingTime, 0);
                 
                 colorSliders.EnableSliders(true);
+                skipButton.gameObject.SetActive(true); 
             }
             else
             {
@@ -60,6 +67,7 @@ public class Temporizador : MonoBehaviour
                 ResetTimer();
                 timerIsRunning = true;
                 colorSliders.EnableSliders(false);
+                skipButton.gameObject.SetActive(false); 
             }
             timeText.text = remainingTime.ToString("F2");
         }
@@ -70,5 +78,11 @@ public class Temporizador : MonoBehaviour
         remainingTime = timeleft;
         butonManager.attack = false;
         butonManager.defense = false;
+    }
+
+    private void SkipTimer() 
+    {
+        remainingTime = 0;
+        timerIsRunning = false;
     }
 }
