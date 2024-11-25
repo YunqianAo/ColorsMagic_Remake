@@ -11,11 +11,13 @@ public class ButtonManager : MonoBehaviour
     public void atackButton()
     {
         attack = true;
+        defense = false;
     }
 
     public void defenseButton()
     {
         defense = true;
+        attack = false;
     }
 
     public void mainMenu()

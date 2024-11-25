@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
         float percentage = (currentHealth / initialHealth);
         Debug.Log(percentage);
-        healthBar.UpdateBar(percentage);
+        healthBar.SetBarValue(percentage);
         if(currentHealth <= 0)
         {
             End();
