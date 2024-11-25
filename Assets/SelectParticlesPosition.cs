@@ -26,21 +26,13 @@ public class SelectParticlesPosition : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if (!sliderR.IsActive())
-        {
-            this.GetComponentInChildren<ParticleSystem>().enableEmission = false;
-        }
-    }
-
     public void OnSliderBeginDrag(int sliderId)
     {
         if (sliderId == 1) isDraggingSliderR = true;
         else if (sliderId == 2) isDraggingSliderG = true;
         else if (sliderId == 3) isDraggingSliderB = true;
 
-        
+        Debug.Log($"Comenzó a arrastrar el slider {sliderId}");
     }
 
     public void OnSliderEndDrag(int sliderId)
@@ -50,7 +42,7 @@ public class SelectParticlesPosition : MonoBehaviour
         else if (sliderId == 3) { isDraggingSliderB = false; }
         this.GetComponentInChildren<ParticleSystem>().enableEmission = false;
 
-  
+        Debug.Log($"Terminó de arrastrar el slider {sliderId}");
     }
 
     public void OnSliderValueChanged(int sliderId, float value)
