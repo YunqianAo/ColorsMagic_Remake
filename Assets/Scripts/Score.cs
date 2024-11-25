@@ -8,6 +8,7 @@ public class Score : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
 
+    public AudioSource scoreFx;
     private void Start()
     {
         scoreText.text =  ScoreManager.instance.GetScore().ToString();
@@ -16,6 +17,7 @@ public class Score : MonoBehaviour
 
     private void UpdateScoreText(int newScore)
     {
+        scoreFx.Play();
         scoreText.text = newScore.ToString();
     }
 

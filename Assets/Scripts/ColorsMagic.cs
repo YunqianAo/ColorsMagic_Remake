@@ -9,7 +9,7 @@ public class ColorsMagic : MonoBehaviour
     public Image fadeImage; // Imagen usada para el efecto de fade (debe cubrir toda la pantalla).
     public GameObject fadePrefab; // Prefab de la imagen de fade, usado si no se encuentra uno en escena.
     public float fadeDuration = 1f; // Duración del fade.
-
+    public AudioSource clicksound;
     private void Awake()
     {
         if (Instance == null)
@@ -66,6 +66,7 @@ public class ColorsMagic : MonoBehaviour
 
     public void ChangeToScene(string sceneName)
     {
+        clicksound.Play();
         if (fadeImage != null)
         {
             StartCoroutine(FadeOutAndChangeScene(sceneName));

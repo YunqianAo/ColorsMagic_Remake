@@ -17,6 +17,7 @@ public class Temporizador : MonoBehaviour
     private ColorSliders colorSliders;
     private ButtonManager butonManager;
 
+    public AudioSource skipButtonFx;
     private void Awake()
     {
         skipButton.gameObject.SetActive(false); // Initialize SKIP button and set it to inactive
@@ -82,6 +83,7 @@ public class Temporizador : MonoBehaviour
 
     private void SkipTimer() 
     {
+        skipButtonFx.Play();
         remainingTime = 0;
         timerIsRunning = false;
     }

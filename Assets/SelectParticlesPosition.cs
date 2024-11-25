@@ -14,6 +14,7 @@ public class SelectParticlesPosition : MonoBehaviour
     private bool isDraggingSliderG = false;
     private bool isDraggingSliderB = false;
 
+    public AudioSource slideFx;
     void Start()
     {
         // Asignar eventos usando los métodos del inspector
@@ -37,6 +38,7 @@ public class SelectParticlesPosition : MonoBehaviour
 
     public void OnSliderBeginDrag(int sliderId)
     {
+        slideFx.Play();
         if (sliderId == 1) isDraggingSliderR = true;
         else if (sliderId == 2) isDraggingSliderG = true;
         else if (sliderId == 3) isDraggingSliderB = true;
