@@ -26,6 +26,14 @@ public class SelectParticlesPosition : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (!sliderR.IsActive())
+        {
+            this.GetComponentInChildren<ParticleSystem>().enableEmission = false;
+        }
+    }
+
     public void OnSliderBeginDrag(int sliderId)
     {
         if (sliderId == 1) isDraggingSliderR = true;
