@@ -27,11 +27,11 @@ public class IconAnimator : MonoBehaviour
     void Update()
     {
         
-        if (iconType == IconType.Sword && buttonManager.attack)
+        if (iconType == IconType.Sword && buttonManager.attack && !buttonManager.defense)
         {
             AnimateSword();
         }
-        else if (iconType == IconType.Shield && buttonManager.defense)
+        else if (iconType == IconType.Shield && buttonManager.defense && !buttonManager.attack)
         {
             AnimateShield();
         }
