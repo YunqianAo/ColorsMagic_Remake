@@ -19,6 +19,7 @@ public class SelectParticlesPosition : MonoBehaviour
         // Asignar eventos usando los métodos del inspector
         sliderR.onValueChanged.AddListener(value => OnSliderValueChanged(1, value));
         sliderG.onValueChanged.AddListener(value => OnSliderValueChanged(2, value));
+
         sliderB.onValueChanged.AddListener(value => OnSliderValueChanged(3, value));
 
         this.GetComponentInChildren<ParticleSystem>().enableEmission = false;
