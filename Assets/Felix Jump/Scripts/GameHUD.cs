@@ -37,7 +37,7 @@ public class GameHUD : MonoBehaviour
             return;
         }
 
-        ScenesManager.Instance.LoadScene("GameSelector");
+        ScenesManager.Instance.LoadScene("Lobby");
         // Score.Instance.SetAddScore(false);
     }
 }
