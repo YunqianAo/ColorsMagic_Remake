@@ -151,6 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barImage: {fileID: 3163057004557316465}
+  backgroundImage: {fileID: 0}
+  barSprites: []
+  backgroundSprites: []
 --- !u!1 &8710868100398697579
 GameObject:
   m_ObjectHideFlags: 0

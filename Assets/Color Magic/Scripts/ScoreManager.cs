@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ScoreManager
+public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance = new ScoreManager();
 
