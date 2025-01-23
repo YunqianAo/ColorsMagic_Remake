@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager_Vacaciones : MonoBehaviour
 {
     #region Singleton
-    private static GameManager _instance;
-    public static GameManager Instance => _instance;
+    private static GameManager_Vacaciones _instance;
+    public static GameManager_Vacaciones Instance => _instance;
 
     private void Awake()
     {

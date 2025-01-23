@@ -10,12 +10,12 @@ public class UpdateMetaScore : MonoBehaviour
     public TextMeshProUGUI Level1ScoreText;
     public TextMeshProUGUI Level2ScoreText;
 
-    private ScoreManager scoreManager;
+    private ScoreManager_Vacaciones scoreManager;
 
     private void Start()
     {
         
-        scoreManager = ScoreManager.Instance;
+        scoreManager = ScoreManager_Vacaciones.Instance;
         UpdateScoreTotal();
         
     }

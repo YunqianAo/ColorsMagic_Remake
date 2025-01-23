@@ -9,12 +9,12 @@ public class UpdateLobbyScore : MonoBehaviour
     public TextMeshProUGUI lobbyScore;
     
     
-    private ScoreManager scoreManager;
+    private ScoreManager_Vacaciones scoreManager;
 
     void Start()
     {
         
-        scoreManager = ScoreManager.Instance;
+        scoreManager = ScoreManager_Vacaciones.Instance;
         UpdateTotalGameScore();
     }
     private void Update()

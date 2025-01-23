@@ -7,13 +7,13 @@ public class ScoreManagerLevel : MonoBehaviour
 {
     
     public TextMeshProUGUI scoreText; 
-    public ScoreManager scoremanager;
+    public ScoreManager_Vacaciones scoremanager;
 
     void Start()
     {
         
-         scoremanager = FindObjectOfType<ScoreManager>();
-         scoremanager = ScoreManager.Instance;
+         scoremanager = FindObjectOfType<ScoreManager_Vacaciones>();
+         scoremanager = ScoreManager_Vacaciones.Instance;
          scoremanager.score1 = 0;
          scoremanager.score2 = 0;
     }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager_Vacaciones : MonoBehaviour
 {
     #region Singleton
-    private static ScoreManager _instance;
-    public static ScoreManager Instance => _instance;
+    private static ScoreManager_Vacaciones _instance;
+    public static ScoreManager_Vacaciones Instance => _instance;
 
     private void Awake()
     {
