@@ -8,11 +8,11 @@ public class LobbyManager : MonoBehaviour
     public Transform levelGrid;         // 按钮网格布局容器
     public Sprite unlockedSprite;       // 解锁关卡按钮图标
     public Sprite lockedSprite;         // 未解锁关卡按钮图标
-    private LevelManager levelManager;
+    private GameLevelController levelManager;
 
     private void Start()
     {
-        levelManager = FindObjectOfType<LevelManager>();
+        levelManager = FindObjectOfType<GameLevelController>();
         GenerateLevelButtons();
     }
 

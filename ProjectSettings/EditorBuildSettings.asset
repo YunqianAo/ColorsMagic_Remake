@@ -32,4 +32,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ColorMagicRemake/Main.unity
     guid: dd9be7edf7dc94747953ee24d49db496
+  - enabled: 1
+    path: Assets/ColorMagicRemake/Lobby.unity
+    guid: 44afe2fca09918f4b87f08345aa86868
+  - enabled: 1
+    path: Assets/ColorMagicRemake/Level1.unity
+    guid: 1fcc62a416713ae41a738ad465756dd3
+  - enabled: 1
+    path: Assets/ColorMagicRemake/Level2.unity
+    guid: badaadfeb5059af4cb3b035271b06cea
   m_configObjects: {}
