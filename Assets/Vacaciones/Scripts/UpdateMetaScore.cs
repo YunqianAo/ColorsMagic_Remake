@@ -24,13 +24,11 @@ public class UpdateMetaScore : MonoBehaviour
         UpdateMetaScoreTotalText();
         UpdateMetaScoreLevel1Text();
         UpdateMetaScoreLevel2Text();
-        UpdateScoreTotal();
     }
     private void UpdateScoreTotal()
     {
         scoreManager.MaxTotalLevels = scoreManager.MaxScore1 + scoreManager.MaxScore2;
         scoreManager.MaxTotalGame = scoreManager.MaxTotalLevels;
-        PlayerPrefs.SetInt("MaxTotalGame2", scoreManager.MaxTotalGame);
     }
     private void UpdateMetaScoreTotalText()
     {
@@ -40,7 +38,7 @@ public class UpdateMetaScore : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Score Text no estï¿½ asignado en el ScoreManager.");
+            Debug.LogError("Score Text no está asignado en el ScoreManager.");
         }
         
     }
@@ -52,7 +50,7 @@ public class UpdateMetaScore : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Score Text no estï¿½ asignado en el ScoreManager.");
+            Debug.LogError("Score Text no está asignado en el ScoreManager.");
         }
        
     }
@@ -64,7 +62,7 @@ public class UpdateMetaScore : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Score Text no estï¿½ asignado en el ScoreManager.");
+            Debug.LogError("Score Text no está asignado en el ScoreManager.");
         }
     }
 }
